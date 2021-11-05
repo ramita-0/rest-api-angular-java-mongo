@@ -1,0 +1,16 @@
+{
+  "articulos":
+  [{
+    "id": ObjectId("614dc7423033d2026259c804"),
+    "cantidad": 3
+  }],
+  "importe": 760,
+  "horario":
+    {
+      "dia": 25,
+      "mes": 07,
+      "año": 21,
+      "hora": 19,
+      "minuto": 37
+    }
+}

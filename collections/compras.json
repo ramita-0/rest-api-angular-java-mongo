@@ -1,0 +1,15 @@
+{
+  "articulos":
+  [{
+    "nombre": "harina",
+    "cantidad": "20 paquetes"
+  }],
+  "importe": 760,
+  "horario":
+    {
+      "dia": 25,
+      "mes": 07,
+      "año": 21
+    }
+}
+

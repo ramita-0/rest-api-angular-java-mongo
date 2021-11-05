@@ -1,0 +1,50 @@
+[{
+  "nombre": "American IPA",
+  "marca": "Juguetes Perdidos",
+  "tipo": "Cerveza",
+  "precio": 230,
+  "cantidad": 20,
+  "info":
+    {
+      "alcohol": true,
+      "artesanal": true,
+      "color": "Rubia",
+      "ibu": 9,
+      "graduacion": 10,
+      "descripcion": "Cerveza amarga"
+    }
+},
+
+{
+  "nombre": "Fernet Branca",
+  "marca": "Branca",
+  "tipo": "Aperitivo",
+  "precio": 350,
+  "cantidad": 12,
+  "info":
+    {
+      "alcohol": true,
+      "artesanal": false,
+      "color": null,
+      "ibu": null,
+      "graduacion": 39,
+      "descripcion": "Bebida digestiva"
+    }
+},
+
+{
+  "nombre": "Coca-Cola",
+  "marca": "The Coca-Cola Company",
+  "tipo": "Gaseosa",
+  "precio": 160,
+  "cantidad": 30,
+  "info":
+    {
+      "alcohol": false,
+      "artesanal": false,
+      "color": null,
+      "ibu": null,
+      "graduacion": null,
+      "descripcion": "Gaseosa"
+    }
+}]
