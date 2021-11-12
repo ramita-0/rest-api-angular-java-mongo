@@ -1,0 +1,45 @@
+//validation empleados
+{
+    "$jsonSchema": 
+    {
+        "required" : ["informacion", "salario", "tipo"],
+        
+        "properties": 
+        {
+            "informacion":    
+            {
+                "required" : ["nombre", "apellido", "edad", "dni", "fechaNacimiento", "telefono" ],
+                "bsonType": "object",
+
+                "properties": {
+                    
+                    "nombre": {"bsonType": "string"},
+                    "apellido": {"bsonType": "string"},
+                    "edad": {"bsonType": "int"},
+                    "dni": {"bsonType": "int"},
+                    "fechaNacimiento": {"bsonType": "string"},
+                    "telefono": {"bsonType": "string"}
+                }
+                
+            },
+
+            "login":
+            {
+                "bsonType": "object",
+                "required" : ["user", "password"],
+                
+                "properties":{
+                    "user": {"bsonType": "string"},
+                    "password": {"bsonType": "string"}
+                }
+
+            },
+
+            "salario": {"bsonType" : "double"},
+            "tipo": {"bsonType" : "string"}
+        }
+    }
+}
+
+// validation ventas
+
