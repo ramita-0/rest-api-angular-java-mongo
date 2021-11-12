@@ -1,0 +1,30 @@
+[{
+  "informacion":
+  {
+    "nombre": "Ramiro",
+    "apellido": "Moya",
+    "edad": 18,
+    "dni": 42353980,
+    "fechaNacimiento": "12/03/02",
+    "telefono": 123123   
+  },
+  "login":
+  {
+    "user": "ramiro123",
+    "password": 123
+  }
+},
+  
+{
+    "informacion":
+    {
+      "nombre": "Matias",
+      "apellido": "Gerez",
+      "edad": 19,
+      "dni": 42353980,
+      "fechaNacimiento": "12/03/02",
+      "telefono": 1132424   
+    },
+      "salario": 60000,
+      "tipo": "cocinero"
+}]

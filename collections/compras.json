@@ -2,14 +2,9 @@
   "articulos":
   [{
     "nombre": "harina",
-    "cantidad": "20 paquetes"
+    "unidades": 2
   }],
+  "proveedor": "Serenisima",
   "importe": 760,
-  "horario":
-    {
-      "dia": 25,
-      "mes": 07,
-      "año": 21
-    }
+  "fecha": new Date("2021-12-11T16:00:03Z")
 }
-
