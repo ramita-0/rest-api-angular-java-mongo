@@ -43,3 +43,91 @@
 
 // validation ventas
 
+
+{
+    "$jsonSchema": 
+    {
+        "required": ["articulos", "importe", "fecha"],
+        "properties": 
+        {
+            "articulos":    
+            {
+                "required" : ["id", "cantidad"],
+                "bsonType": "object",
+                       
+                "properties": {
+                    
+                    "id": {"bsonType": "string"},
+                    "cantidad": {"bsonType": "int"},
+                }
+            },
+
+            "importe": {"bsonType": "double"},
+            "fecha": {"bsonType": "date"}
+        }
+    }
+}
+
+// validation compras
+
+{
+    "$jsonSchema": 
+    {
+        "required": ["articulos", "proveedor", "importe", "fecha"],
+
+        "properties": 
+        {
+        
+            "articulos":    
+            {
+                "required" : ["nombre", "unidades"],
+                "bsonType": "object",
+                       
+                "properties": {
+                    
+                    "nombre": {"bsonType": "string"},
+                    "unidades": {"bsonType": "int"},
+                }
+            },
+            "proveedor": {"bsonType": "string"},
+            "importe": {"bsonType": "double"},
+            "fecha": {"bsonType": "date"}
+        }
+    }
+}
+
+// validation bebidas
+
+{
+    "$jsonSchema": 
+    {
+        "required": ["nombre", "marca", "tipo", "precio", "cantidad"],
+
+        "properties": 
+        {
+
+            "nombre": {"bsonType": "string"},
+            "marca": {"bsonType": "string"},
+            "tipo": {"bsonType": "string"},
+            "precio": {"bsonType": "int"},
+            "cantidad": {"bsonType": "int"},
+
+            "info": 
+            {
+                "required": ["alcohol", "artesanal", "color", "ibu", "graduacion", "descripcion"],
+                "bsonType": "object",
+
+                "properties": 
+                {
+                    "alcohol": {"bsonType": "bool"},
+                    "artesanal": {"bsonType": "bool"},
+                    "color": {"bsonType": "string"},
+                    "ibu": {"bsonType": "int"},
+                    "graduacion": {"bsonType": "int"},
+                    "descripcion": {"bsonType": "string"}
+
+                }
+            }
+        }
+    }
+}
