@@ -1,24 +1,25 @@
 //validation empleados
+
 {
     "$jsonSchema": 
     {
+        "bsonType": "object",
         "required" : ["informacion", "salario", "tipo"],
-        
+
         "properties": 
         {
             "informacion":    
             {
-                "required" : ["nombre", "apellido", "edad", "dni", "fechaNacimiento", "telefono" ],
+                "required" : ["nombre", "apellido", "edad", "dni", "fechaNacimiento"],
                 "bsonType": "object",
-
+                
                 "properties": {
-                    
                     "nombre": {"bsonType": "string"},
                     "apellido": {"bsonType": "string"},
                     "edad": {"bsonType": "int"},
                     "dni": {"bsonType": "int"},
                     "fechaNacimiento": {"bsonType": "string"},
-                    "telefono": {"bsonType": "string"}
+                    "telefono": {"bsonType": "int"}
                 }
                 
             },
@@ -27,34 +28,34 @@
             {
                 "bsonType": "object",
                 "required" : ["user", "password"],
-                
+
                 "properties":{
                     "user": {"bsonType": "string"},
                     "password": {"bsonType": "string"}
                 }
-
             },
 
-            "salario": {"bsonType" : "double"},
+            "salario": {"bsonType" : "number"},
             "tipo": {"bsonType" : "string"}
         }
     }
 }
 
 // validation ventas
-
-
 {
+    "bsonType": "object",
     "$jsonSchema": 
     {
+        "bsonType": "object",
         "required": ["articulos", "importe", "fecha"],
+
         "properties": 
         {
             "articulos":    
             {
-                "required" : ["id", "cantidad"],
                 "bsonType": "object",
-                       
+                "required" : ["id", "cantidad"],
+
                 "properties": {
                     
                     "id": {"bsonType": "string"},
@@ -62,7 +63,7 @@
                 }
             },
 
-            "importe": {"bsonType": "double"},
+            "importe": {"bsonType": "number"},
             "fecha": {"bsonType": "date"}
         }
     }
@@ -73,6 +74,7 @@
 {
     "$jsonSchema": 
     {
+        "bsonType": "object",
         "required": ["articulos", "proveedor", "importe", "fecha"],
 
         "properties": 
@@ -89,8 +91,9 @@
                     "unidades": {"bsonType": "int"},
                 }
             },
+
             "proveedor": {"bsonType": "string"},
-            "importe": {"bsonType": "double"},
+            "importe": {"bsonType": "number"},
             "fecha": {"bsonType": "date"}
         }
     }
@@ -101,20 +104,20 @@
 {
     "$jsonSchema": 
     {
-        "required": ["nombre", "marca", "tipo", "precio", "cantidad"],
+        "bsonType": "object",
+        "required": ["nombre", "marca", "tipo", "precio", "cantidad", "info"],
 
         "properties": 
         {
-
             "nombre": {"bsonType": "string"},
             "marca": {"bsonType": "string"},
             "tipo": {"bsonType": "string"},
-            "precio": {"bsonType": "int"},
+            "precio": {"bsonType": "number"},
             "cantidad": {"bsonType": "int"},
 
             "info": 
             {
-                "required": ["alcohol", "artesanal", "color", "ibu", "graduacion", "descripcion"],
+                "required": ["descripcion"],
                 "bsonType": "object",
 
                 "properties": 
@@ -122,10 +125,9 @@
                     "alcohol": {"bsonType": "bool"},
                     "artesanal": {"bsonType": "bool"},
                     "color": {"bsonType": "string"},
-                    "ibu": {"bsonType": "int"},
-                    "graduacion": {"bsonType": "int"},
+                    "ibu": {"bsonType": "number"},
+                    "graduacion": {"bsonType": "number"},
                     "descripcion": {"bsonType": "string"}
-
                 }
             }
         }
