@@ -7,6 +7,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { VentaComponent } from './venta/venta.component';
 import { HomeComponent } from './home/home.component';
 import { IngresoStockComponent } from './ingreso-stock/ingreso-stock.component';
+import { CuadroBebidaCervezaRubiaComponent } from './venta/cuadro-bebida-cerveza-rubia/cuadro-bebida-cerveza-rubia.component';
+import { CuadroBebidaCervezaNegraComponent } from './venta/cuadro-bebida-cerveza-negra/cuadro-bebida-cerveza-negra.component';
+import { CuadroBebidaCervezaRojaComponent } from './venta/cuadro-bebida-cerveza-roja/cuadro-bebida-cerveza-roja.component';
+
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { IngresoStockComponent } from './ingreso-stock/ingreso-stock.component';
     NavBarComponent,
     VentaComponent,
     HomeComponent,
-    IngresoStockComponent
+    IngresoStockComponent,
+    CuadroBebidaCervezaRubiaComponent,
+    CuadroBebidaCervezaNegraComponent,
+    CuadroBebidaCervezaRojaComponent,
+   
   ],
   imports: [
     BrowserModule,
