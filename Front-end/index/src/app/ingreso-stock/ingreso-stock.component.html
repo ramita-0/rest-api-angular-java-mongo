@@ -3,9 +3,10 @@
     <h1 id="tituloStock">Ingreso Stock</h1>
 </div>
 <br><br><br>
+<h3>Ingreso Stock</h3>
 <form>
 
-    Ingrese nombre del objeto: <input name="ingresaObjeto" type="text" list="Bebidas">
+    Ingrese nombre del objeto: <input class="input" id="" name="ingresaObjeto" type="text" list="Bebidas">
 
     <datalist id="Bebidas">
         <option value="CocaCola">
@@ -20,13 +21,45 @@
 <br>
 <form>
 
-    Cantidad de objetos: <input name="ingresaCantidad" type="number" min="0" max="500" >
+    Cantidad de objetos: <input name="ingresaCantidad" class="input" type="number" min="0" max="500" >
 
+</form>
+<br>
+
+<input type="submit" id="boton" value="Enviar datos">
+<br><br>
+
+<h3>Ingreso nueva bebida</h3>
+<br>
+<form>
+    Nombre de la bebida: <input name="Nombre" class="input" type="text">
 </form>
 <br>
 <form>
-    Ingrese el nombre del proveedor:<input name="ingresaProveedor" type="text">
+    Marca de la bebida: <input name="Marca" class="input" type="text">
 </form>
 <br>
-<input type="submit" value="Enviar datos">
+<form>
+    Tipo de bebida: <input name="Tipo" type="text" class="input" list="tipoDeBebida">
+        <datalist id="tipoDeBebida">
+            <option value="Cerveza Artesanal">
+            <option value="Cerveza Comercial">
+            <option value="Aperitivo">
+            <option value="Gaseosa">
+        </datalist>
+</form>
+<br>
+<form>
+    Precio de la bebida: <input name="Precio" class="input" type="number" min="0">
+</form>
+<br>
+<form>
+    Cantidad: <input name="Cantidad" class="input" type="number" min="0">
+</form>
+<br>
+<form>
+    Descripcion de la bebida: <input name="Descripcion" class="input" type="text">
+</form>
+<br>
 
+<input type="submit" id="boton" value="Enviar datos">
