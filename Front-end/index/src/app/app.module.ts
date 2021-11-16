@@ -10,6 +10,7 @@ import { IngresoStockComponent } from './ingreso-stock/ingreso-stock.component';
 import { ProductoComponent } from './venta/producto/producto.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
