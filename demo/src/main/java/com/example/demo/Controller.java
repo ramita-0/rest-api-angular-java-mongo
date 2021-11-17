@@ -21,12 +21,13 @@ public class Controller {
     }
 
 
-    @RequestMapping(value ="/venta", method = RequestMethod.GET)
+    @RequestMapping(value ="/get_bebidas", method = RequestMethod.GET)
     public ResponseEntity<Object> obtenerBebidas() {
         HashMap<String, Object> datos = new HashMap<>();
 
+        //esto es testing, hacer el metodo como se debe.
         datos.put("asd", "stirng");
-        datos.put("asd", "stirng");
+        datos.put("dsa", "stirng");
 
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }

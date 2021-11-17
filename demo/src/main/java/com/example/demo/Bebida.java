@@ -1,6 +1,6 @@
 package com.example.demo;
 
-public class Bebida {
+public abstract class Bebida {
 
     private String nombre;
     private String marca;
@@ -9,7 +9,7 @@ public class Bebida {
     private int cantidad;
     private Object info;
 
-    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, Object info) {
+    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, Object info){
         this.nombre = nombre;
         this.marca = marca;
         this.tipo = tipo;

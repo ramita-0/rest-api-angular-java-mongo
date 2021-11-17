@@ -26,28 +26,8 @@ class MongoDB {
         this.conectarAColeccion(coleccion);
     }
 
-    public void conectar(String baseDeDatos){
-        this.conectarABaseDeDatos(baseDeDatos);
-    }
-
     public void conectarAColeccionUnica(String coleccion){
         this.conectarAColeccion(coleccion);
-    }
-
-    public MongoDatabase getBaseDeDatos() {
-        return baseDeDatos;
-    }
-
-    public void setBaseDeDatos(MongoDatabase baseDeDatos) {
-        this.baseDeDatos = baseDeDatos;
-    }
-
-    public MongoCollection getColeccion() {
-        return coleccion;
-    }
-
-    public void setColeccion(MongoCollection coleccion) {
-        this.coleccion = coleccion;
     }
 
     public void conectarABaseDeDatos(String nombreBaseDeDatos){
@@ -77,6 +57,10 @@ class MongoDB {
         return existe;
     }
 
+
+
+
+
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
         ArrayList<Bebida> bebidas = new ArrayList<>();
@@ -99,8 +83,10 @@ class MongoDB {
             Document info = (Document) documento.get("info");
             int ibu = info.getInteger("ibu");
 
-            Bebida bebida = new Bebida(nombre,marca,tipo,precio,cantidad,info);
-            bebidas.add(bebida);
+            //hacer los switch cases para crear determinada bebida
+
+            //Bebida bebida = new Bebida(nombre,marca,tipo,precio,cantidad,info);
+            //bebidas.add(bebida);
         }
         datos.put("Bebidas",bebidas);
         return datos;
@@ -154,10 +140,28 @@ class MongoDB {
     }
 
 
+
+
+
+    public MongoDatabase getBaseDeDatos() {
+        return baseDeDatos;
+    }
+
+    public void setBaseDeDatos(MongoDatabase baseDeDatos) {
+        this.baseDeDatos = baseDeDatos;
+    }
+
+    public MongoCollection getColeccion() {
+        return coleccion;
+    }
+
+    public void setColeccion(MongoCollection coleccion) {
+        this.coleccion = coleccion;
+    }
+
+
     /**
      * documentación de clase Document
      * http://mongodb.github.io/mongo-java-driver/3.6/javadoc/org/bson/Document.html
      */
-
-
 }

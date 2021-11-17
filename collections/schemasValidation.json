@@ -35,7 +35,7 @@
                 }
             },
 
-            "salario": {"bsonType" : "number"},
+            "salario": {"bsonType" : "int"},
             "tipo": {"bsonType" : "string"}
         }
     }
@@ -112,7 +112,7 @@
             "nombre": {"bsonType": "string"},
             "marca": {"bsonType": "string"},
             "tipo": {"bsonType": "string"},
-            "precio": {"bsonType": "number"},
+            "precio": {"bsonType": "int"},
             "cantidad": {"bsonType": "int"},
 
             "info": 
