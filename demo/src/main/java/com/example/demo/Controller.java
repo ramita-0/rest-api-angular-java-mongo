@@ -21,29 +21,26 @@ public class Controller {
     }
 
 
-    @RequestMapping(value ="/get_bebidas", method = RequestMethod.GET)
-    public ResponseEntity<Object> obtenerBebidas() {
-        HashMap<String, Object> datos = new HashMap<>();
+   // @RequestMapping(value ="/get_bebidas", method = RequestMethod.GET)
+   // public ResponseEntity<Object> obtenerBebidas() {
+   //     HashMap<String, Object> datos = new HashMap<>();
 
         //esto es testing, hacer el metodo como se debe.
-        datos.put("asd", "stirng");
-        datos.put("dsa", "stirng");
+   //     datos.put("asd", "stirng");
+   //     datos.put("dsa", "stirng");
 
+     //   return new ResponseEntity<>(datos, HttpStatus.OK);
+  //  }
+
+    //funciona
+   @RequestMapping(value ="/bebidas/obtener", method = RequestMethod.GET)
+    public ResponseEntity<Object> obtenerBebidas() {
+        mongo.conectarAColeccionUnica("bebidas");
+        HashMap<String, Object> datos = mongo.obtenerBebidas();
         return new ResponseEntity<>(datos, HttpStatus.OK);
     }
 
-
-
-
-
-
-//    @RequestMapping(value ="/venta", method = RequestMethod.GET)
-//    public ResponseEntity<Object> obtenerBebidas() {
-//
-//        HashMap<String, Object> datos = mongo.obtenerBebidas();
-//        return new ResponseEntity<>(datos, HttpStatus.OK);
-//    }
-
+//necesitamos llama ajax y extrar datos de el html lo mismo para probar los inserts e update
     @RequestMapping(value = "/bebida/eliminar", method = RequestMethod.DELETE)
     public ResponseEntity<Object> eliminarBebida() {
         mongo.conectarAColeccionUnica("bebidas");
