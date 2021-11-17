@@ -7,16 +7,20 @@ public abstract class Bebida {
     private String tipo;
     private int precio;
     private int cantidad;
-    private Object info;
+    private String descripcion;
+    private boolean alcohol;
 
-    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, Object info){
+    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, String descripcion,boolean alcohol){
         this.nombre = nombre;
         this.marca = marca;
         this.tipo = tipo;
         this.precio = precio;
         this.cantidad = cantidad;
-        this.info = info;
+        this.descripcion=descripcion;
+        this.alcohol=alcohol;
     }
+    //saque la variable de tipo Object info que esta mal
+
 
     public String getNombre() {
         return nombre;
@@ -58,11 +62,19 @@ public abstract class Bebida {
         this.cantidad = cantidad;
     }
 
-    public Object getInfo() {
-        return info;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setInfo(Object info) {
-        this.info = info;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public boolean isAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(boolean alcohol) {
+        this.alcohol = alcohol;
     }
 }
