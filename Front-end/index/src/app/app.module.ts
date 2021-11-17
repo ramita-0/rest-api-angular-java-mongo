@@ -8,6 +8,7 @@ import { VentaComponent } from './venta/venta.component';
 import { HomeComponent } from './home/home.component';
 import { IngresoStockComponent } from './ingreso-stock/ingreso-stock.component';
 import { ProductoComponent } from './venta/producto/producto.component';
+import { CarroComponent } from './carro/carro.component';
 
 
 
@@ -19,6 +20,7 @@ import { ProductoComponent } from './venta/producto/producto.component';
     HomeComponent,
     IngresoStockComponent,
     ProductoComponent,
+    CarroComponent,
     
   ],
   imports: [
