@@ -8,19 +8,31 @@ import { VentaComponent } from './venta/venta.component';
 const routes: Routes = [
   {
     path: "",
-    component:HomeComponent
+    component:HomeComponent,
+    data: {
+      nombre: "Tres Reyes"
+    }
   },
   {
     path:"ingreso_stock",
-    component:IngresoStockComponent
+    component:IngresoStockComponent,
+    data: {
+      nombre: "Ingreso Stock"
+    }
   },
   {
     path: "venta",
-    component:VentaComponent
+    component:VentaComponent,
+    data: {
+      nombre: "Venta"
+    }
   },
   {
     path: "carro",
-    component:CarroComponent
+    component:CarroComponent,
+    data: {
+      nombre: "Carrito"
+    }
   }
 ];
 
@@ -28,4 +40,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
