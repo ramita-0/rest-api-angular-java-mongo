@@ -17,7 +17,7 @@ class MongoDB {
         this.host="localhost";
         this.puerto=27017;
         //cambiar BAR a minusculas (bar)
-        this.conectar("BAR");
+        this.conectar("bar");
     }
 
     public void conectar(String baseDeDatos){ this.conectarABaseDeDatos(baseDeDatos); }
@@ -61,6 +61,7 @@ class MongoDB {
         return existe;
     }
 
+    //terminado y funcional
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
         ArrayList<Bebida> bebidas = new ArrayList<>();
@@ -111,7 +112,7 @@ class MongoDB {
         return datos;
     }
 
-  //terminado y funcional
+
   public void insertarBebida(Bebida bebida){
       Document nuevoDocumento = new Document();
       Document info = new Document();
@@ -169,6 +170,9 @@ class MongoDB {
         coleccion.updateOne(filtro,nuevosValores);
     }
 
+
+    // metodos para relizar Baja de la base de bebidas (no es lo mismo que realizar venta)
+    // (los implementamos pero no estan usados en el tp)
     public void eliminarBebida(String nombre){
         String json = "{ nombre: { $eq: '"+nombre+"' } }";
         Document filtro = Document.parse(json);

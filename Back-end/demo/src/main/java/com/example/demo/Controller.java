@@ -33,7 +33,7 @@ public class Controller {
   //  }
 
     //funciona
-   @RequestMapping(value ="/bebidas/obtener", method = RequestMethod.GET)
+   @RequestMapping(value ="/get_bebidas", method = RequestMethod.GET)
     public ResponseEntity<Object> obtenerBebidas() {
         mongo.conectarAColeccionUnica("bebidas");
         HashMap<String, Object> datos = mongo.obtenerBebidas();
