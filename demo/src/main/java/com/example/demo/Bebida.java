@@ -10,7 +10,7 @@ public abstract class Bebida {
     private String descripcion;
     private boolean alcohol;
 
-    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, String descripcion,boolean alcohol){
+    public Bebida(String nombre, String marca, String tipo, int precio, int cantidad, String descripcion, boolean alcohol){
         this.nombre = nombre;
         this.marca = marca;
         this.tipo = tipo;

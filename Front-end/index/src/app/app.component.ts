@@ -13,16 +13,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void{
-    this.cargarData();
   }
 
-  //cuando carga la pagina home, mapea /api/venta en el localhost
-  public cargarData(){
-    this.RestService.get("http://localhost:8080/api/get_bebidas")
-    .subscribe(respuesta => {
-      //logea la respuesta de la api en la consola
-      console.log(respuesta)
-    })
-  }
+  
 }
 

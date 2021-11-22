@@ -17,29 +17,37 @@ class MongoDB {
         this.host="localhost";
         this.puerto=27017;
         //cambiar BAR a minusculas (bar)
-        this.conectar("BAR");
+        this.conectar("bar");
     }
 
+
     public void conectar(String baseDeDatos){ this.conectarABaseDeDatos(baseDeDatos); }
+
     public void conectarAColeccionUnica(String coleccion){
         this.conectarAColeccion(coleccion);
     }
+
     public MongoDatabase getBaseDeDatos() {
         return baseDeDatos;
     }
+
     public void setBaseDeDatos(MongoDatabase baseDeDatos) {
         this.baseDeDatos = baseDeDatos;
     }
+
     public MongoCollection getColeccion() {
         return coleccion;
     }
+
     public void setColeccion(MongoCollection coleccion) {
         this.coleccion = coleccion;
     }
+
     public void conectarABaseDeDatos(String nombreBaseDeDatos){
         MongoClient mongo = new MongoClient("localhost",27017);
         this.baseDeDatos = mongo.getDatabase(nombreBaseDeDatos);
     }
+
     public void conectarAColeccion(String nombreDeColeccion){
         if (this.existeLaColeccion(nombreDeColeccion)){
             this.coleccion = baseDeDatos.getCollection(nombreDeColeccion);
@@ -48,8 +56,8 @@ class MongoDB {
             this.coleccion = baseDeDatos.getCollection(nombreDeColeccion);
         }
     }
-    public boolean existeLaColeccion(String nombreDeColeccion){
 
+    public boolean existeLaColeccion(String nombreDeColeccion){
         MongoIterable<String> nombresDeColecciones = baseDeDatos.listCollectionNames();
         boolean existe = false;
 
@@ -61,17 +69,19 @@ class MongoDB {
         return existe;
     }
 
+    //funciona
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
         ArrayList<Bebida> bebidas = new ArrayList<>();
         FindIterable resultado = coleccion.find();
         MongoCursor iterador = resultado.iterator();
 
+
         while (iterador.hasNext()) {
             Document documento = (Document) iterador.next();
             String nombre = documento.getString("nombre");
             String marca = documento.getString("marca");
-            int precio= documento.getInteger("precio");
+            int precio = documento.getInteger("precio");
             String tipo = documento.getString("tipo");
             int cantidad= documento.getInteger("cantidad");
 
@@ -80,9 +90,9 @@ class MongoDB {
             String descripcion = info.getString("descripcion");
 
             boolean artesanal;
-            int graduacion;
+            double graduacion;
             String color;
-            int ibu;
+            double ibu;
 
             switch (tipo){
                 case "Gaseosa":
@@ -91,18 +101,18 @@ class MongoDB {
                     break;
 
                 case "Aperitivo":
-                    artesanal= info.getBoolean("artesanal");
-                    graduacion = info.getInteger("graduacion");
-                    Aperitivo aperitivo = new Aperitivo(descripcion,nombre,marca,tipo,cantidad,precio,alcohol,artesanal,graduacion);
+                    artesanal = info.getBoolean("artesanal");
+                    graduacion = info.getDouble("graduacion");
+                    Aperitivo aperitivo = new Aperitivo(descripcion, nombre, marca, tipo, cantidad, precio, alcohol, artesanal, graduacion);
                     bebidas.add(aperitivo);
                     break;
 
                 case "Cerveza":
-                    artesanal= info.getBoolean("artesanal");
-                    graduacion = info.getInteger("graduacion");
-                    color=info.getString("color");
-                    ibu=info.getInteger("ibu");
-                    Cerveza cerveza = new Cerveza(color,ibu,descripcion,nombre,marca,tipo,cantidad,precio,alcohol,artesanal,graduacion);
+                    artesanal = info.getBoolean("artesanal");
+                    graduacion = info.getDouble("graduacion");
+                    color = info.getString("color");
+                    ibu = info.getDouble("ibu");
+                    Cerveza cerveza = new Cerveza(color, ibu, descripcion, nombre, marca, tipo, cantidad, precio, alcohol, artesanal, graduacion);
                     bebidas.add(cerveza);
                     break;
             }
@@ -111,41 +121,41 @@ class MongoDB {
         return datos;
     }
 
-  //terminado y funcional
-  public void insertarBebida(Bebida bebida){
-      Document nuevoDocumento = new Document();
-      Document info = new Document();
+    // terminado, falta comprobar si funciona
+    public void insertarBebida(Bebida bebida){
+        Document nuevoDocumento = new Document();
+        Document info = new Document();
 
-      nuevoDocumento.append("nombre",bebida.getNombre());
-      nuevoDocumento.append("precio",bebida.getPrecio());
-      nuevoDocumento.append("marca",bebida.getMarca());
-      nuevoDocumento.append("tipo",bebida.getTipo());
-      nuevoDocumento.append("cantidad",bebida.getCantidad());
+        nuevoDocumento.append("nombre",bebida.getNombre());
+        nuevoDocumento.append("precio",bebida.getPrecio());
+        nuevoDocumento.append("marca",bebida.getMarca());
+        nuevoDocumento.append("tipo",bebida.getTipo());
+        nuevoDocumento.append("cantidad",bebida.getCantidad());
 
-      info.append("descripcion",bebida.getDescripcion());
-      info.append("alcohol",bebida.isAlcohol());
+        info.append("descripcion",bebida.getDescripcion());
+        info.append("alcohol",bebida.isAlcohol());
 
-      String tipo = bebida.getTipo();
+        String tipo = bebida.getTipo();
 
-      if(tipo.equals("Aperitivo")){
+        if(tipo.equals("Aperitivo")){
           Aperitivo aperitivo = (Aperitivo) bebida;
           info.append("graduacion",aperitivo.getGraduacion());
           info.append("artesanal",aperitivo.isArtesanal());
-      }
-      else if(tipo.equals("Cerveza")){
+        }
+        else if(tipo.equals("Cerveza")){
           Cerveza cerveza = (Cerveza) bebida;
           info.append("graduacion",cerveza.getGraduacion());
           info.append("artesanal",cerveza.isArtesanal());
           info.append("color",cerveza.getColor());
           info.append("ibu",cerveza.getIbu());
-      }
+        }
 
-      nuevoDocumento.append("info",info);
-      coleccion.insertOne(nuevoDocumento);
-  }
+        nuevoDocumento.append("info",info);
+        coleccion.insertOne(nuevoDocumento);
+    }
 
-  //de este para abajo necesitamos llamadas ajax probar todos
-    public int obtenerCantidad(String nombre){
+    //hacer llamadas http para probarlos!
+    public int obtenerStock(String nombre){
         String json = "{ nombre : { $eq : '"+nombre+"' } }";
         Document filtro = Document.parse(json);
         FindIterable resultado = coleccion.find(filtro);
@@ -159,16 +169,18 @@ class MongoDB {
         return cantidad;
     }
 
-    public void actualizarDatosDeBebida(String nombre,int cantidadASumar){
+    public void actualizarStockBebida(String nombre, int cantidadASumar){
         String json = "{ nombre: { $eq : '"+nombre+"' } }";
         Document filtro = Document.parse(json);
-        int valorNuevoCantidad= cantidadASumar+this.obtenerCantidad(nombre);
+        int valorNuevoCantidad = cantidadASumar + this.obtenerStock(nombre);
 
         json = "{ $set: { cantidad :"+valorNuevoCantidad+" } }";
-        Document nuevosValores= Document.parse(json);
-        coleccion.updateOne(filtro,nuevosValores);
+        Document nuevosValores = Document.parse(json);
+        coleccion.updateOne(filtro, nuevosValores);
     }
 
+
+    //estos metodos no los contemplamos en el tp, pero los hicimos de igual manera, se utilizarian en la app final
     public void eliminarBebida(String nombre){
         String json = "{ nombre: { $eq: '"+nombre+"' } }";
         Document filtro = Document.parse(json);
