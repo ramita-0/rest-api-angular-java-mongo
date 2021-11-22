@@ -1,44 +1,85 @@
 [{
+  "_id": {
+    "$oid": "61999402b7e081a560cd7e1c"
+  },
   "nombre": "American IPA",
   "marca": "Juguetes Perdidos",
   "tipo": "Cerveza",
   "precio": 230.5,
   "cantidad": 20,
-  "info":
-    {
-      "alcohol": true,
-      "artesanal": true,
-      "color": "Rubia",
-      "ibu": 9,
-      "graduacion": 10,
-      "descripcion": "Cerveza amarga"
-    }
-},
-
-{
+  "info": {
+    "alcohol": true,
+    "artesanal": true,
+    "color": "Rubia",
+    "ibu": 9,
+    "graduacion": 10,
+    "descripcion": "Cerveza amarga"
+  }
+},{
+  "_id": {
+    "$oid": "61999402b7e081a560cd7e1d"
+  },
   "nombre": "Fernet Branca",
   "marca": "Branca",
   "tipo": "Aperitivo",
   "precio": 350,
   "cantidad": 12,
-  "info":
-    {
-      "alcohol": true,
-      "artesanal": false,
-      "graduacion": 39,
-      "descripcion": "Bebida digestiva"
-    }
-},
-
-{
+  "info": {
+    "alcohol": true,
+    "artesanal": false,
+    "graduacion": 39,
+    "descripcion": "Bebida digestiva"
+  }
+},{
+  "_id": {
+    "$oid": "61999402b7e081a560cd7e1e"
+  },
   "nombre": "Coca-Cola",
   "marca": "The Coca-Cola Company",
   "tipo": "Gaseosa",
   "precio": 160,
   "cantidad": 30,
+<<<<<<< HEAD
+  "info": {
+    "alcohol": false,
+    "descripcion": "Gaseosa"
+  }
+,{
+  "_id": {
+    "$oid": "619994a6b7e081a560cd7e21"
+  },
+  "nombre": "Sprite",
+  "marca": "The Coca-Cola Company",
+  "tipo": "Gaseosa",
+  "precio": 140,
+  "cantidad": 30,
+  "info": {
+    "alcohol": false,
+    "descripcion": "Gaseosa"
+  }
+},{
+  "_id": {
+    "$oid": "61999538b7e081a560cd7e23"
+  },
+  "nombre": "Guinnes",
+  "marca": "Diageo",
+  "tipo": "Cerveza",
+  "precio": 300,
+  "cantidad": 24,
+  "info": {
+    "alcohol": true,
+    "artesanal": false,
+    "color": "Oscura",
+    "ibu": 4.1,
+    "graduacion": 8,
+    "descripcion": "Cerveza fuerte"
+  }
+}]
+=======
   "info":
     {
       "alcohol":false,
       "descripcion": "Gaseosa"
     }
 }]
+>>>>>>> 018890cded4d8df55b6b1f86d68e6ad075d541cb

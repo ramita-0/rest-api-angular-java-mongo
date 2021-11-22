@@ -69,7 +69,11 @@ class MongoDB {
         return existe;
     }
 
+<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     //funciona
+=======
+    //terminado y funcional
+>>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
         ArrayList<Bebida> bebidas = new ArrayList<>();
@@ -121,10 +125,17 @@ class MongoDB {
         return datos;
     }
 
+<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     // terminado, falta comprobar si funciona
     public void insertarBebida(Bebida bebida){
         Document nuevoDocumento = new Document();
         Document info = new Document();
+=======
+
+  public void insertarBebida(Bebida bebida){
+      Document nuevoDocumento = new Document();
+      Document info = new Document();
+>>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
 
         nuevoDocumento.append("nombre",bebida.getNombre());
         nuevoDocumento.append("precio",bebida.getPrecio());
@@ -180,7 +191,12 @@ class MongoDB {
     }
 
 
+<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     //estos metodos no los contemplamos en el tp, pero los hicimos de igual manera, se utilizarian en la app final
+=======
+    // metodos para relizar Baja de la base de bebidas (no es lo mismo que realizar venta)
+    // (los implementamos pero no estan usados en el tp)
+>>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
     public void eliminarBebida(String nombre){
         String json = "{ nombre: { $eq: '"+nombre+"' } }";
         Document filtro = Document.parse(json);

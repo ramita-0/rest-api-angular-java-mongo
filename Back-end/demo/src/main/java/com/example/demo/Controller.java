@@ -23,8 +23,12 @@ public class Controller {
     }
 
     //funciona
+<<<<<<< HEAD:demo/src/main/java/com/example/demo/Controller.java
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value ="/get/bebidas", method = RequestMethod.GET)
+=======
+   @RequestMapping(value ="/get_bebidas", method = RequestMethod.GET)
+>>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/Controller.java
     public ResponseEntity<Object> obtenerBebidas() {
         mongo.conectarAColeccionUnica("bebidas");
         HashMap<String, Object> datos = mongo.obtenerBebidas();
