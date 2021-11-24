@@ -69,11 +69,8 @@ class MongoDB {
         return existe;
     }
 
-<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     //funciona
-=======
     //terminado y funcional
->>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
         ArrayList<Bebida> bebidas = new ArrayList<>();
@@ -113,7 +110,7 @@ class MongoDB {
 
                 case "Cerveza":
                     artesanal = info.getBoolean("artesanal");
-                    graduacion = info.getDouble("graduacion");
+                    graduacion = info.getInteger("graduacion");
                     color = info.getString("color");
                     ibu = info.getDouble("ibu");
                     Cerveza cerveza = new Cerveza(color, ibu, descripcion, nombre, marca, tipo, cantidad, precio, alcohol, artesanal, graduacion);
@@ -125,41 +122,25 @@ class MongoDB {
         return datos;
     }
 
-<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     // terminado, falta comprobar si funciona
-    public void insertarBebida(Bebida bebida){
+    public void insertarBebida(HashMap<String,String> bebida){
         Document nuevoDocumento = new Document();
         Document info = new Document();
-=======
 
-  public void insertarBebida(Bebida bebida){
-      Document nuevoDocumento = new Document();
-      Document info = new Document();
->>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
+        nuevoDocumento.append("nombre", bebida.get("nombre"));
+        nuevoDocumento.append("marca", bebida.get("marca"));
+        nuevoDocumento.append("tipo", bebida.get("tipo"));
+        nuevoDocumento.append("precio", Integer.parseInt(bebida.get("precio")));
+        nuevoDocumento.append("cantidad", Integer.parseInt(bebida.get("cantidad")));
 
-        nuevoDocumento.append("nombre",bebida.getNombre());
-        nuevoDocumento.append("precio",bebida.getPrecio());
-        nuevoDocumento.append("marca",bebida.getMarca());
-        nuevoDocumento.append("tipo",bebida.getTipo());
-        nuevoDocumento.append("cantidad",bebida.getCantidad());
+        info.append("alcohol", Boolean.parseBoolean(bebida.get("cantidad")));
+        info.append("artesanal", Boolean.parseBoolean(bebida.get("artesanal")));
 
-        info.append("descripcion",bebida.getDescripcion());
-        info.append("alcohol",bebida.isAlcohol());
-
-        String tipo = bebida.getTipo();
-
-        if(tipo.equals("Aperitivo")){
-          Aperitivo aperitivo = (Aperitivo) bebida;
-          info.append("graduacion",aperitivo.getGraduacion());
-          info.append("artesanal",aperitivo.isArtesanal());
+        if (bebida.get("tipo").equals("cerveza") || bebida.get("tipo").equals("aperitivo")){
+           info.append("graduacion", Integer.parseInt(bebida.get("graduacion")));
         }
-        else if(tipo.equals("Cerveza")){
-          Cerveza cerveza = (Cerveza) bebida;
-          info.append("graduacion",cerveza.getGraduacion());
-          info.append("artesanal",cerveza.isArtesanal());
-          info.append("color",cerveza.getColor());
-          info.append("ibu",cerveza.getIbu());
-        }
+
+        info.append("descripcion", bebida.get("descripcion"));
 
         nuevoDocumento.append("info",info);
         coleccion.insertOne(nuevoDocumento);
@@ -191,12 +172,9 @@ class MongoDB {
     }
 
 
-<<<<<<< HEAD:demo/src/main/java/com/example/demo/MongoDB.java
     //estos metodos no los contemplamos en el tp, pero los hicimos de igual manera, se utilizarian en la app final
-=======
     // metodos para relizar Baja de la base de bebidas (no es lo mismo que realizar venta)
     // (los implementamos pero no estan usados en el tp)
->>>>>>> 1c42a848be94433637b683e6581bc0fbb56885fc:Back-end/demo/src/main/java/com/example/demo/MongoDB.java
     public void eliminarBebida(String nombre){
         String json = "{ nombre: { $eq: '"+nombre+"' } }";
         Document filtro = Document.parse(json);
@@ -214,6 +192,4 @@ class MongoDB {
      * documentación de clase Document
      * http://mongodb.github.io/mongo-java-driver/3.6/javadoc/org/bson/Document.html
      */
-
-
 }

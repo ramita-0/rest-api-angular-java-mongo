@@ -14,7 +14,7 @@
         <option value="American IPA">
     </datalist>
 
-    <input placeholder="Cantidad restock" name="cantidad" type="number" ngModel><br><br>
+    <input placeholder="Cantidad restock" name="cantidad" min="1" type="number" ngModel><br><br>
     
     <button id="boton">restock</button>
 
@@ -24,36 +24,80 @@
 
 <h3>Ingreso nueva bebida</h3><br>
 
-{{tipo}}
 <form #opcionForm="ngForm">
 
-    <input placeholder = "Tipo" autocomplete="off" name = "tipo" list = "tipoBebidas" type = "text"  [(ngModel)]="tipo">
-
+    <input list="tipoBebidas" placeholder = "Tipo" autocomplete="off" name = "tipo" list = "tipoBebidas" type = "text"  [(ngModel)]="tipo">
+    
     <datalist id="tipoBebidas"> 
-        <option value="Cerveza Artesanal">
-        <option value="Cerveza Comercial">
+        <option value="Cerveza">
         <option value="Aperitivo">
-        <option value="Gaseosa">
+        <option value="Bebida">
     </datalist>
 
+</form><br>
+
+<!--Form de Cerveza-->
+<form #insertCervezaForm="ngForm" (ngSubmit)="insertCerveza(insertCervezaForm.value)" *ngIf="this.tipo === 'Cerveza'">
+    
+    <input #nombreCerveza placeholder = "Nombre" autocomplete="off" name = "nombre" type = "text" ngModel>
+    <input #marcaCerveza placeholder = "Marca" name = "marca" type = "text" ngModel><br><br>
+    Artesanal<input placeholder = "Artesanal" name = "artesanal" type = "checkbox" ngModel><br>
+
+    <input #ibuCerveza placeholder = "Ibu" name = "ibu" type = "number" ngModel>
+
+    <input #colorCerveza autocomplete="off" placeholder = "Color" list = "coloresCerveza" name = "color" type = "text" ngModel><br>
+    
+    <datalist id="coloresCerveza">
+        <option value="Rubia"></option>
+        <option value="Roja"></option>
+        <option value="Negra"></option>
+    </datalist>
+
+    <input #graduacionCerveza placeholder = "% Graduacion Alcoholica" name = "graduacion" type = "number" min="1" ngModel><br><br>
+
+    <input #precioCerveza placeholder = "Precio" name = "precio" min="1" type = "number" ngModel>
+    <input #cantidadCerveza placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
+    <input #descripcionCerveza placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
+
+    <!--Hay que agregarle al objeto del form un valor de tipo = 'cerveza' en el .ts-->
+
+    <!--Hay que agregarle al objeto del form un valor de alcoholica = true en el .ts-->
+
+    <button id="boton">insert</button>
 </form>
 
 
-<form #insertForm="ngForm" (ngSubmit)="insertBebida(insertForm.value)">
+<!--Form de Aperitivo-->
+<form #insertAperitivoForm="ngForm" (ngSubmit)="insertAperitivo(insertAperitivoForm.value)" *ngIf="this.tipo === 'Aperitivo'">
     
-    <input placeholder = "Nombre bebida" autocomplete="off" name = "nombre" type = "text" ngModel>
-    <input placeholder = "Marca bebida" name = "marca" type = "text" ngModel>
+    <input placeholder = "Nombre" autocomplete="off" name = "nombre" type = "text" ngModel>
+    <input placeholder = "Marca" name = "marca" type = "text" ngModel><br><br>
+    Artesanal<input placeholder = "Artesanal" name = "artesanal" type = "checkbox" ngModel><br>
 
+    <input placeholder = "% Graduacion Alcoholica" name = "graduacion" type = "number" ngModel><br><br>
 
-    <input placeholder = "Color Cerveza" name = "color" type = "text" ngModel>
-    <input placeholder = "Ibu" name = "ibu" type = "text" ngModel><br>
-    <input placeholder = "Graduacion Alcoholica" name = "graduacion" type = "text" ngModel><br><br>
-
-    
-
-    <input placeholder = "Precio" name = "precio" type = "number" ngModel><br><br>
-    <input placeholder = "Cantidad" name = "cantidad" type = "number" ngModel><br><br>
+    <input placeholder = "Precio" name = "precio" min="1" type = "number" ngModel>
+    <input placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
     <input placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
+
+    <!--Hay que agregarle al objeto del form valores implicitos en el .ts-->
+
+    <button id="boton">insert</button>
+</form>
+
+
+<!--Form de Bebida-->
+<form #insertBebidaForm="ngForm" (ngSubmit)="insertBebida(insertBebidaForm.value)" *ngIf="this.tipo === 'Bebida'">
+    
+    <input placeholder = "Nombre" autocomplete="off" name = "nombre" type = "text" ngModel>
+    <input placeholder = "Marca" name = "marca" type = "text" ngModel><br><br>
+    Artesanal<input placeholder = "Artesanal" name = "artesanal" type = "checkbox" ngModel><br>
+
+    <input placeholder = "Precio" name = "precio" min="1" type = "number" ngModel>
+    <input placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
+    <input placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
+
+    <!--Hay que agregarle al objeto del form valores implicitos en el .ts-->
 
     <button id="boton">insert</button>
 </form>
