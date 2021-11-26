@@ -8,37 +8,26 @@ import { RestService } from '../rest.service';
 })
 export class VentaComponent implements OnInit {
 
-  constructor(
-    private RestService:RestService
-  ) {}
-
   // array que almacena todas las bebidas
   bebidas: any = []
-    
+      
   // array por cada tipo de bebida
   cervezasArtesanales: {alcohol: any, artesanal: any, cantidad: any, color: any, descripcion: any, graduacion: any, ibu: any, marca: any, nombre: any, precio: any, tipo: any}[] = []
   cervezasComerciales: {alcohol: any, artesanal: any, cantidad: any, color: any, descripcion: any, graduacion: any, ibu: any, marca: any, nombre: any, precio: any, tipo: any}[] = []
   aperitivos: {alcohol: any, artesanal: any, cantidad: any, color: any, descripcion: any, graduacion: any, ibu: any, marca: any, nombre: any, precio: any, tipo: any}[] = []
   gaseosas: {alcohol: any, artesanal: any, cantidad: any, color: any, descripcion: any, graduacion: any, ibu: any, marca: any, nombre: any, precio: any, tipo: any}[] = []
 
-  
-
+  constructor(
+    private RestService:RestService
+  ) {}
 
   ngOnInit(): void {
     this.getBebidas();
   }
 
-  //cuando carga la pagina home, mapea /api/venta en el localhost
   public getBebidas(){
-    this.RestService.get("http://localhost:8080/api/get/bebidas")
-    .subscribe(respuesta => {
-      console.log(respuesta);
-      this.bebidas = respuesta;
-      for(const k in this.bebidas){
-        const v = this.bebidas[k]
-        console.log(v);
-        
-      }
-      });
+    this.RestService.getCollectionBebidas("http://localhost:8080/api/get/bebidas").subscribe(bebidas =>{
+      console.log(bebidas);
+    })  
   }
 }

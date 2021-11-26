@@ -9,11 +9,13 @@ import { RestService } from '../rest.service';
 })
 export class IngresoStockComponent implements OnInit {
   tipo: any = "";
-  
+
   //input childs del forms de cerveza
   @ViewChild("nombreCerveza") nombreCerveza:any;
   @ViewChild("marcaCerveza") marcaCerveza:any;
-  @ViewChild("artesanalCerveza") artesanalCerveza:any;
+  
+  //al ser checkbox necesita otro tipo de implementacion, hay que ver bien como se reseta
+  //@ViewChild("artesanalCerveza") artesanalCerveza:any;
   @ViewChild("ibuCerveza") ibuCerveza:any;
   @ViewChild("colorCerveza") colorCerveza:any;
   @ViewChild("graduacionCerveza") graduacionCerveza:any;
@@ -33,17 +35,21 @@ export class IngresoStockComponent implements OnInit {
     bebida["tipo"] = "Cerveza";
     bebida["alcohol"] = true;
     console.log(bebida);
+
     this.RestService.postBebida(bebida);
 
     //limpiamos los campos
     this.nombreCerveza.nativeElement.value = "";
-    this.artesanalCerveza.nativeElement.value = "";
-    this.descripcionCerveza.nativeElement.value = "";
+    this.marcaCerveza.nativeElement.value = "";
+
+    //al ser checkbox necesita otro tipo de implementacion, hay que ver bien como se reseta
+    //this.artesanalCerveza.nativeElement.value = "";
     this.ibuCerveza.nativeElement.value = "";
     this.colorCerveza.nativeElement.value = "";
     this.graduacionCerveza.nativeElement.value = "";
     this.precioCerveza.nativeElement.value = "";
     this.cantidadCerveza.nativeElement.value = "";
+    this.descripcionCerveza.nativeElement.value = "";
   }
 
   public insertAperitivo(bebida:any){
@@ -56,7 +62,13 @@ export class IngresoStockComponent implements OnInit {
   public insertBebida(bebida:any){
     bebida["tipo"] = "Gaseosa";
     bebida["alcohol"] = false;
+
     this.RestService.postBebida(bebida);
+  }
+
+  public deleteBebida(bebida:any){
+    console.log(bebida)
+    this.RestService.deleteBebida(bebida);
   }
 
   ngOnInit(): void {

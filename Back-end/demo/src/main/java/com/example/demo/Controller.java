@@ -25,25 +25,18 @@ public class Controller {
     @RequestMapping(value ="/get/bebidas", method = RequestMethod.GET)
     public ResponseEntity<Object> obtenerBebidas() {
         mongo.conectarAColeccionUnica("bebidas");
-        HashMap<String, Object> datos = mongo.obtenerBebidas();
-        System.out.println("\nsuccess");
-        return new ResponseEntity<>(datos, HttpStatus.OK);
-    }
-
-    //este metodo no lo usamos en la app para el tp, en una app terminada posiblemente se usaria
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @RequestMapping(value = "/delete/eliminar/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Object> eliminarBebida() {
-        mongo.conectarAColeccionUnica("bebidas");
-        mongo.eliminarBebida("Fernet Branca");
-        return new ResponseEntity<>(HttpStatus.OK);
+        HashMap<String, Object> bebidas = mongo.obtenerBebidas();
+        System.out.println("\nsuccessful get");
+        return new ResponseEntity<>(bebidas, HttpStatus.OK);
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @RequestMapping(value = "/post/insertBebida", method = RequestMethod.POST)
     public ResponseEntity<Object> insertBebida(@RequestBody HashMap<String, String> bebida) {
         mongo.conectarAColeccionUnica("bebidas");
+        System.out.println(bebida);
         mongo.insertarBebida(bebida);
+
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -53,6 +46,15 @@ public class Controller {
         mongo.conectarAColeccionUnica("bebidas");
         int cantidad = Integer.parseInt(bebida.get("cantidad"));
         mongo.actualizarStockBebida(bebida.get("nombre"), cantidad);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @RequestMapping(value = "/delete/deleteBebida/{bebida}", method = RequestMethod.DELETE)
+    public ResponseEntity<Object> deleteBebida(@PathVariable String bebida) {
+        mongo.conectarAColeccionUnica("bebidas");
+        System.out.println("\n" + bebida);
+        mongo.eliminarBebida(bebida);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

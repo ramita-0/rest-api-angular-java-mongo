@@ -4,8 +4,10 @@
 
 <form #updateForm="ngForm" (ngSubmit)="updateStock(updateForm.value)">
 
-    <input list="bebidas" autocomplete="off" placeholder="Nombre bebida" name="nombre" type="text" ngModel><br><br>
+    <input autocomplete="off" placeholder="Nombre bebida" name="nombre" type="text" ngModel><br><br>
 
+    <!--Este datalist tendria que cargarse dinamicamente con un get de la base de datos
+        con las bebidas disponibles para restockear-->
     <datalist id="bebidas"> 
         <option value="Coca-Cola">
         <option value="Sprite">
@@ -17,6 +19,15 @@
     <input placeholder="Cantidad restock" name="cantidad" min="1" type="number" ngModel><br><br>
     
     <button id="boton">restock</button>
+
+</form><br>
+
+<h3>Delete Bebida</h3>
+
+<form #deleteForm="ngForm" (ngSubmit)=deleteBebida(deleteForm.value)>
+
+    <input autocomplete="off" placeholder="Nombre Bebida" name="nombre" type="text" ngModel><br><br>
+    <button id="boton">delete</button>
 
 </form>
 
@@ -41,7 +52,7 @@
     
     <input #nombreCerveza placeholder = "Nombre" autocomplete="off" name = "nombre" type = "text" ngModel>
     <input #marcaCerveza placeholder = "Marca" name = "marca" type = "text" ngModel><br><br>
-    Artesanal<input placeholder = "Artesanal" name = "artesanal" type = "checkbox" ngModel><br>
+    Artesanal<input #artesanalCerveza placeholder = "Artesanal" name = "artesanal" type = "checkbox" ngModel><br>
 
     <input #ibuCerveza placeholder = "Ibu" name = "ibu" type = "number" ngModel>
 
@@ -58,10 +69,6 @@
     <input #precioCerveza placeholder = "Precio" name = "precio" min="1" type = "number" ngModel>
     <input #cantidadCerveza placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
     <input #descripcionCerveza placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
-
-    <!--Hay que agregarle al objeto del form un valor de tipo = 'cerveza' en el .ts-->
-
-    <!--Hay que agregarle al objeto del form un valor de alcoholica = true en el .ts-->
 
     <button id="boton">insert</button>
 </form>
@@ -80,8 +87,6 @@
     <input placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
     <input placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
 
-    <!--Hay que agregarle al objeto del form valores implicitos en el .ts-->
-
     <button id="boton">insert</button>
 </form>
 
@@ -96,8 +101,6 @@
     <input placeholder = "Precio" name = "precio" min="1" type = "number" ngModel>
     <input placeholder = "Cantidad" name = "cantidad" min="1" type = "number" ngModel><br><br>
     <input placeholder = "Descripcion" name="descripcion" type = "text" ngModel><br><br>
-
-    <!--Hay que agregarle al objeto del form valores implicitos en el .ts-->
 
     <button id="boton">insert</button>
 </form>

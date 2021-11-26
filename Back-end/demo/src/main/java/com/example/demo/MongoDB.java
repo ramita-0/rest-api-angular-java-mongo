@@ -69,7 +69,6 @@ class MongoDB {
         return existe;
     }
 
-    //funciona
     //terminado y funcional
     public HashMap<String,Object> obtenerBebidas(){
         HashMap<String,Object> datos = new HashMap<>();
@@ -80,39 +79,39 @@ class MongoDB {
 
         while (iterador.hasNext()) {
             Document documento = (Document) iterador.next();
+
+            String tipo = documento.getString("tipo");
+
             String nombre = documento.getString("nombre");
             String marca = documento.getString("marca");
             int precio = documento.getInteger("precio");
-            String tipo = documento.getString("tipo");
             int cantidad= documento.getInteger("cantidad");
 
             Document info = (Document) documento.get("info");
             boolean alcohol = info.getBoolean("alcohol");
+            boolean artesanal = info.getBoolean("artesanal");
             String descripcion = info.getString("descripcion");
 
-            boolean artesanal;
-            double graduacion;
+            int graduacion;
             String color;
-            double ibu;
+            int ibu;
 
             switch (tipo){
-                case "Gaseosa":
-                    BebidaNoAlcoholica bebidaNoAlcoholica = new BebidaNoAlcoholica(nombre,marca,tipo,cantidad,precio,descripcion,alcohol);
+                case "Bebida":
+                    BebidaNoAlcoholica bebidaNoAlcoholica = new BebidaNoAlcoholica(nombre, marca, tipo, cantidad, precio, descripcion, alcohol, artesanal);
                     bebidas.add(bebidaNoAlcoholica);
                     break;
 
                 case "Aperitivo":
-                    artesanal = info.getBoolean("artesanal");
-                    graduacion = info.getDouble("graduacion");
+                    graduacion = info.getInteger("graduacion");
                     Aperitivo aperitivo = new Aperitivo(descripcion, nombre, marca, tipo, cantidad, precio, alcohol, artesanal, graduacion);
                     bebidas.add(aperitivo);
                     break;
 
                 case "Cerveza":
-                    artesanal = info.getBoolean("artesanal");
                     graduacion = info.getInteger("graduacion");
                     color = info.getString("color");
-                    ibu = info.getDouble("ibu");
+                    ibu = info.getInteger("ibu");
                     Cerveza cerveza = new Cerveza(color, ibu, descripcion, nombre, marca, tipo, cantidad, precio, alcohol, artesanal, graduacion);
                     bebidas.add(cerveza);
                     break;
@@ -133,11 +132,16 @@ class MongoDB {
         nuevoDocumento.append("precio", Integer.parseInt(bebida.get("precio")));
         nuevoDocumento.append("cantidad", Integer.parseInt(bebida.get("cantidad")));
 
-        info.append("alcohol", Boolean.parseBoolean(bebida.get("cantidad")));
+        info.append("alcohol", Boolean.parseBoolean(bebida.get("alcohol")));
         info.append("artesanal", Boolean.parseBoolean(bebida.get("artesanal")));
 
-        if (bebida.get("tipo").equals("cerveza") || bebida.get("tipo").equals("aperitivo")){
-           info.append("graduacion", Integer.parseInt(bebida.get("graduacion")));
+        if (bebida.get("tipo").equals("Cerveza")) {
+            info.append("color", bebida.get("color"));
+            info.append("ibu", Integer.parseInt(bebida.get("ibu")));
+            info.append("graduacion", Integer.parseInt(bebida.get("graduacion")));
+        }
+        else if (bebida.get("tipo").equals("Aperitivo")){
+            info.append("graduacion", Integer.parseInt(bebida.get("graduacion")));
         }
 
         info.append("descripcion", bebida.get("descripcion"));
