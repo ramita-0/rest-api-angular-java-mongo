@@ -1,4 +1,9 @@
 # tp-mongo-java
+Integrantes: -Ramiro Moya
+             -Felipe Bocelo
+             -Luca Trias
+             -Mateo Gonzalez
+             -Francisco Cirone
 
 El tp implementa llamadas http de Angular, utilizamos e implementamos PATCH, DELETE, POST
 y nos falto implementar la llamada de GET.
