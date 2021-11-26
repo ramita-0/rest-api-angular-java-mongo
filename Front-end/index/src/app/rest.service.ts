@@ -29,9 +29,9 @@ export class RestService {
 
   deleteBebida(bebida:any){
     let nombre = bebida["nombre"];
-    let ruta = "http://localhost:8080/api/delete/deleteBebida/${nombre}";
-    let rutaParametro = ruta.concat(nombre.toS)
-    this.http.delete("http://localhost:8080/api/delete/deleteBebida/${nombre}").subscribe(res =>{
+    let ruta = "http://localhost:8080/api/delete/deleteBebida/";
+    let rutaParametro = ruta.concat(nombre);
+    this.http.delete(rutaParametro).subscribe(res =>{
     })
   }
 }

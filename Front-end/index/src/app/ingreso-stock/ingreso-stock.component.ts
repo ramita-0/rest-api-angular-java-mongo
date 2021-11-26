@@ -67,7 +67,6 @@ export class IngresoStockComponent implements OnInit {
   }
 
   public deleteBebida(bebida:any){
-    console.log(bebida)
     this.RestService.deleteBebida(bebida);
   }
 
