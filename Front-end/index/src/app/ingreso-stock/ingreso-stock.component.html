@@ -1,37 +1,40 @@
 <app-nav-bar></app-nav-bar>
 
-<h3>Ingreso Stock</h3>
+<div>
+    <h3>Ingreso Stock</h3>
 
-<form #updateForm="ngForm" (ngSubmit)="updateStock(updateForm.value)">
-
-    <input autocomplete="off" placeholder="Nombre bebida" name="nombre" type="text" ngModel><br><br>
-
-    <!--Este datalist tendria que cargarse dinamicamente con un get de la base de datos
-        con las bebidas disponibles para restockear-->
-    <datalist id="bebidas"> 
-        <option value="Coca-Cola">
-        <option value="Sprite">
-        <option value="Fernet Branca">
-        <option value="Guinnes">
-        <option value="American IPA">
-    </datalist>
-
-    <input placeholder="Cantidad restock" name="cantidad" min="1" type="number" ngModel><br><br>
+    <form #updateForm="ngForm" (ngSubmit)="updateStock(updateForm.value)">
     
-    <button id="boton">restock</button>
+        <input autocomplete="off" placeholder="Nombre bebida" name="nombre" type="text" ngModel><br><br>
+    
+        <!--Este datalist tendria que cargarse dinamicamente con un get de la base de datos
+            con las bebidas disponibles para restockear-->
+        <datalist id="bebidas"> 
+            <option value="Coca-Cola">
+            <option value="Sprite">
+            <option value="Fernet Branca">
+            <option value="Guinnes">
+            <option value="American IPA">
+        </datalist>
+    
+        <input placeholder="Cantidad restock" name="cantidad" min="1" type="number" ngModel><br><br>
+        
+        <button id="boton">restock</button>
+    
+    </form><br>
+    
+    <h3>Delete Bebida</h3>
+    
+    <form #deleteForm="ngForm" (ngSubmit)=deleteBebida(deleteForm.value)>
+    
+        <input autocomplete="off" placeholder="Nombre Bebida" name="nombre" type="text" ngModel><br><br>
+        <button id="boton">delete</button>
+    
+    </form>
+    
+    <br><br>
+</div>
 
-</form><br>
-
-<h3>Delete Bebida</h3>
-
-<form #deleteForm="ngForm" (ngSubmit)=deleteBebida(deleteForm.value)>
-
-    <input autocomplete="off" placeholder="Nombre Bebida" name="nombre" type="text" ngModel><br><br>
-    <button id="boton">delete</button>
-
-</form>
-
-<br><br>
 
 <h3>Ingreso nueva bebida</h3><br>
 
