@@ -1,9 +1,11 @@
-<div>
-    <a class="noAnimacion" [routerLink] = "['']"><img id="casita" src="https://i.ibb.co/QkgWt66/home-icon-icons-com-73532.png"></a>
-    <ul>
-        <li><a [routerLink] = "['/ingreso_stock']" >Ingreso Stock </a></li>
-        <li><a [routerLink] = "['/venta']">Realizar Venta</a></li>
-    </ul>
+<header>
+    <a id="casita" [routerLink] = "['']"><img id="casita" src="https://i.ibb.co/QkgWt66/home-icon-icons-com-73532.png"></a>
+    <nav>
+        <ul>
+            <li><a [routerLink] = "['/ingreso_stock']" >Ingreso Stock </a></li>
+            <li><a [routerLink] = "['/venta']">Realizar Venta</a></li>
+        </ul>
+    </nav>
     <h1>{{ pagina.nombre }}</h1>
-    <a class="noAnimacion" id="carritoId" [routerLink] = "['/carro']"><img id="carrito" src="https://i.ibb.co/JkMjvBZ/carrito.png"></a>
-</div>
+    <a id="carrito" [routerLink] = "['/carro']"><img id="carrito" src="https://i.ibb.co/JkMjvBZ/carrito.png"></a>
+</header>
