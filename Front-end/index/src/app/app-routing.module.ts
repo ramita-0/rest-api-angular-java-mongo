@@ -17,14 +17,14 @@ const routes: Routes = [
     path:"ingreso_stock",
     component:IngresoStockComponent,
     data: {
-      nombre: "Ingreso Stock"
+      nombre: "Stock"
     }
   },
   {
     path: "venta",
     component:VentaComponent,
     data: {
-      nombre: "Venta"
+      nombre: "Ventas"
     }
   },
   {
